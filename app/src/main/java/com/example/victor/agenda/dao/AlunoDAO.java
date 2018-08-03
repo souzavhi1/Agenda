@@ -15,12 +15,12 @@ public class AlunoDAO extends SQLiteOpenHelper {
 
 
     public AlunoDAO(Context context) {
-        super( context, "Ageda",null, 1 );
+        super( context, "Agenda",null, 1 );
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE Alunos(id INTEGER PRIMAREY KEY, nome TEXT NOT NULL, endereco TEXT, telefone TEXT, site TEXT, nota REAL);";
+        String sql = "CREATE TABLE Alunos(id INTEGER PRIMARY KEY, nome TEXT NOT NULL, endereco TEXT, telefone TEXT, site TEXT, nota REAL);";
         db.execSQL( sql );
 
 
@@ -41,9 +41,9 @@ public class AlunoDAO extends SQLiteOpenHelper {
         ContentValues dados = new ContentValues();
         dados.put("nome",aluno.getNome());
         dados.put( "endereco",aluno.getEndereco() );
-        dados.put( "fone",aluno.getFone() );
+        dados.put( "telefone",aluno.getFone() );
         dados.put( "site", aluno.getSite() );
-        dados.put( "note",aluno.getNota() );
+        dados.put( "nota",aluno.getNota() );
 
         db.insert( "Alunos", null, dados );
 
