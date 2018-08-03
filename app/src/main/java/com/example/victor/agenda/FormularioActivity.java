@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.victor.agenda.dao.AlunoDAO;
 import com.example.victor.agenda.modelo.Aluno;
 
 public class FormularioActivity extends AppCompatActivity {
@@ -50,9 +51,12 @@ public class FormularioActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.menu_formulario_ok:
-
-
                 Aluno aluno = helper.pegaAluno();
+
+                AlunoDAO dao = new AlunoDAO( this );
+                dao.Insere(aluno);
+                dao.close();
+
                 Toast.makeText( FormularioActivity.this, "Aluno " + aluno.getNome() + " Salvo!!", Toast.LENGTH_SHORT).show();
 
 

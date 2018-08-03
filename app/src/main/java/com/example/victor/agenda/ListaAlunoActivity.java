@@ -8,6 +8,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.victor.agenda.dao.AlunoDAO;
+import com.example.victor.agenda.modelo.Aluno;
+
+import java.util.List;
+
 public class ListaAlunoActivity extends AppCompatActivity {
 
     @Override
@@ -15,9 +20,13 @@ public class ListaAlunoActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_lista_aluno );
 
-        String[] alunos ={"Daniel","Ronaldo","Jeferson","Felipe","Daniel","Ronaldo","Jeferson","Felipe","Daniel","Ronaldo","Jeferson","Felipe","Daniel","Ronaldo","Jeferson","Felipe"};
-        final ListView listaAlunos = (ListView) findViewById( R.id.lista_alunos );
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>( this,android.R.layout.simple_list_item_1,alunos );
+        AlunoDAO dao = new AlunoDAO( this );
+        List<Aluno> alunos = dao.buscaAlunos();
+        dao.close();
+
+//        String[] alunos ={"Daniel","Ronaldo","Jeferson","Felipe","Daniel","Ronaldo","Jeferson","Felipe","Daniel","Ronaldo","Jeferson","Felipe","Daniel","Ronaldo","Jeferson","Felipe"};
+        ListView listaAlunos = (ListView) findViewById( R.id.lista_alunos );
+        ArrayAdapter<Aluno> adapter = new ArrayAdapter<Aluno>( this,android.R.layout.simple_list_item_1,alunos );
         listaAlunos.setAdapter( adapter );
 
         Button novoAluno = (Button) findViewById( R.id.novo_aluno );
