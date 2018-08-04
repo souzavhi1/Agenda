@@ -54,7 +54,7 @@ public class FormularioActivity extends AppCompatActivity {
                 Aluno aluno = helper.pegaAluno();
 
                 AlunoDAO dao = new AlunoDAO( this );
-                dao.Insere(aluno);
+                dao.insere(aluno);
                 dao.close();
 
                 Toast.makeText( FormularioActivity.this, "Aluno " + aluno.getNome() + " Salvo!!", Toast.LENGTH_SHORT).show();

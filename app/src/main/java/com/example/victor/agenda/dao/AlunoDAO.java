@@ -34,15 +34,15 @@ public class AlunoDAO extends SQLiteOpenHelper {
 
     }
 
-    public void Insere(Aluno aluno) {
+    public void insere(Aluno aluno) {
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues dados = new ContentValues();
         dados.put("nome",aluno.getNome());
         dados.put( "endereco",aluno.getEndereco() );
-        dados.put( "fone",aluno.getFone() );
+        dados.put( "telefone",aluno.getFone() );
         dados.put( "site", aluno.getSite() );
-        dados.put( "note",aluno.getNota() );
+        dados.put( "nota",aluno.getNota() );
 
         db.insert( "Alunos", null, dados );
 
@@ -61,7 +61,7 @@ public class AlunoDAO extends SQLiteOpenHelper {
             aluno.setId( c.getLong( c.getColumnIndex( "id" ) ));
             aluno.setNome( c.getString( c.getColumnIndex( "nome" ) ));
             aluno.setEndereco( c.getString( c.getColumnIndex( "endereco" ) ));
-            aluno.setFone( c.getString( c.getColumnIndex( "fone" ) ));
+            aluno.setFone( c.getString( c.getColumnIndex( "telefone" ) ));
             aluno.setSite( c.getString( c.getColumnIndex( "site" ) ));
             aluno.setNota( c.getDouble( c.getColumnIndex( "nota" ) ));
 
