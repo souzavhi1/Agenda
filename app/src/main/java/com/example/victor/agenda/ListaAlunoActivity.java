@@ -34,6 +34,10 @@ public class ListaAlunoActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> lista, View item, int position, long id) {
                 Aluno aluno = (Aluno) listaAlunos.getItemAtPosition( position );
 
+                Intent intentVaiProFormulario = new Intent( ListaAlunoActivity.this, FormularioActivity.class );
+                intentVaiProFormulario.putExtra( "aluno", aluno );
+                startActivity( intentVaiProFormulario );
+
 
             }
         } );
@@ -41,7 +45,7 @@ public class ListaAlunoActivity extends AppCompatActivity {
         listaAlunos.setOnItemLongClickListener( new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                
+
                 return false;
             }
         } );
