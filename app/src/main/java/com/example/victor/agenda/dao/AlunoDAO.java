@@ -94,6 +94,6 @@ public class AlunoDAO extends SQLiteOpenHelper {
         String[] params = {aluno.getId().toString()};
 
         db.update( "Alunos",dados,"id = ?", params  );
-        
+
     }
 }
