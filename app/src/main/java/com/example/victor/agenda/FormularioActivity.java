@@ -1,7 +1,10 @@
 package com.example.victor.agenda;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.net.sip.SipSession;
+import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +17,8 @@ import android.widget.Toast;
 
 import com.example.victor.agenda.dao.AlunoDAO;
 import com.example.victor.agenda.modelo.Aluno;
+
+import java.io.File;
 
 public class FormularioActivity extends AppCompatActivity {
 
@@ -43,6 +48,22 @@ public class FormularioActivity extends AppCompatActivity {
  //               finish();
 //            }
 //        } );
+
+        Button botaoFoto = (Button) findViewById( R.id.formulario_botao_foto );
+        botaoFoto.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentCamera = new Intent( MediaStore.ACTION_IMAGE_CAPTURE );
+                String caminhoFoto = getExternalFilesDir( null ) + "/" + System.currentTimeMillis() + ".jpg";
+                File arquivoFoto = new File(caminhoFoto);
+
+                intentCamera.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile( FormularioActivity.this,
+                        BuildConfig.APPLICATION_ID + ".provider",arquivoFoto));
+
+                startActivityForResult( intentCamera,123 );
+            }
+
+        } );
     }
 
     @Override
